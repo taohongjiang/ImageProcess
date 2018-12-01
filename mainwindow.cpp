@@ -2,6 +2,9 @@
 #include "QMenuBar"
 #include "QToolBar"
 
+#include <QTextEdit>
+#include <QFileDialog>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -22,13 +25,12 @@ void MainWindow::createActions()
     QToolBar *fileToolBar = addToolBar(tr("File"));
 
     const QIcon newIcon = QIcon::fromTheme("document-new", QIcon(":/icon/open.png"));
-    tcv_newAct_p = new QAction(newIcon, tr("&Open"), this);
-    tcv_newAct_p->setShortcuts(QKeySequence::New);
-    tcv_newAct_p->setStatusTip(tr("Create a new file"));
-    connect(tcv_newAct_p, &QAction::triggered, this, &MainWindow::newFile);
+    tcv_newAct_p = new QAction(newIcon, tr("&Open a new image file"), this);
+    tcv_newAct_p->setShortcuts(QKeySequence::Open);
+    tcv_newAct_p->setStatusTip(tr("Open a new image file"));
+    connect(tcv_newAct_p, &QAction::triggered, this, &MainWindow::newImageFile);
     fileMenu->addAction(tcv_newAct_p);
     fileToolBar->addAction(tcv_newAct_p);
-
 }
 
 void MainWindow::updateMenus()
@@ -57,6 +59,19 @@ void MainWindow::updateMenus()
 */
 }
 
-void MainWindow::newFile() {
-    ;
+void MainWindow::newImageFile() {
+    QString tv_fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+
+    if(tv_fileName != NULL) {
+        TImageDisplayWidget *tv_child = new TImageDisplayWidget();
+        tv_child->openAImage(tv_fileName);
+        tcv_mdiArea_p->addSubWindow(tv_child);
+
+        tv_child->show();
+
+    #ifndef QT_NO_CLIPBOARD
+        //connect(tv_child, &QTextEdit::copyAvailable, cutAct, &QAction::setEnabled);
+        //connect(tv_child, &QTextEdit::copyAvailable, copyAct, &QAction::setEnabled);
+    #endif
+    }
 }

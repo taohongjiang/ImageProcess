@@ -6,6 +6,8 @@
 #include "QMdiArea"
 #include "QMdiSubWindow"
 
+#include "./widgets/timagedisplaywidget.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -20,7 +22,7 @@ public:
     QAction*  tcv_newAct_p;
 
 public slots:
-    void newFile();
+    void newImageFile();
 };
 
 #endif // MAINWINDOW_H

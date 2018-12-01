@@ -1,0 +1,12 @@
+
+*.exe
+*.pdb
+*.ilk
+*.sdf
+*.user
+*.log
+*.tlog
+*.obj
+*.stash
+*.filters
+*.opensdf

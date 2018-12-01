@@ -35,3 +35,8 @@ void TImageDisplayWidget::resizeEvent(QResizeEvent *event) {
     QWidget::resizeEvent(event);
     //tcv_label_p->setPixmap(QPixmap::fromImage(*tcv_image_p).scaled(tcv_label_p->size(), Qt::KeepAspectRatioByExpanding));
 }
+
+virtual void mousePressEvent(QMouseEvent *event) {
+
+}
+

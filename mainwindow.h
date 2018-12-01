@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "QAction"
+#include "QMdiArea"
+#include "QMdiSubWindow"
 
 class MainWindow : public QMainWindow
 {
@@ -9,7 +12,15 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = 0);
+    void updateMenus();
+    void createActions();
     ~MainWindow();
+public:
+    QMdiArea* tcv_mdiArea_p;
+    QAction*  tcv_newAct_p;
+
+public slots:
+    void newFile();
 };
 
 #endif // MAINWINDOW_H

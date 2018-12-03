@@ -1,6 +1,9 @@
 #include "timagedisplaywidget.h"
 #include <QHBoxLayout>
 #include <QPixmap>
+#include <QDrag>
+#include <QMimeData>
+#include <QPainter>
 
 
 TImageDisplayWidget::TImageDisplayWidget(QWidget *parent) : QWidget(parent)
@@ -36,7 +39,26 @@ void TImageDisplayWidget::resizeEvent(QResizeEvent *event) {
     //tcv_label_p->setPixmap(QPixmap::fromImage(*tcv_image_p).scaled(tcv_label_p->size(), Qt::KeepAspectRatioByExpanding));
 }
 
-virtual void mousePressEvent(QMouseEvent *event) {
+void TImageDisplayWidget::mousePressEvent(QMouseEvent *event) {
+    Qt::MouseButtons btn = event->buttons();
+    if(btn == Qt::LeftButton){
+
+        QDrag* drag = new QDrag(this);
+
+        QMimeData* data = new QMimeData();
+        drag->setMimeData(data);
+
+        QPixmap pixmap(":/icon/image.png");
+        QPainter painter(&pixmap);
+
+        drag->setPixmap(pixmap);
+        drag->setHotSpot(QPoint(15,15));
+
+        drag->exec();
+        #ifdef Q_WS_WIN
+             delete drag;
+         #endif
+  }
 
 }
 

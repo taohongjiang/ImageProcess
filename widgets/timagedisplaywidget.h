@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QImage>
 #include <QScrollArea>
+#include <QMouseEvent>
 
 class TImageDisplayWidget : public QWidget
 {

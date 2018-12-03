@@ -14,10 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    widgets/timagedisplaywidget.cpp
+    widgets/timagedisplaywidget.cpp \
+    controllers/timageselectwidget.cpp \
+    widgets/tfunctiontoolbar.cpp
 
 HEADERS  += mainwindow.h \
-    widgets/timagedisplaywidget.h
+    widgets/timagedisplaywidget.h \
+    controllers/timageselectwidget.h \
+    widgets/tfunctiontoolbar.h
 
 RESOURCES += \
     imageprocess.qrc

@@ -1,9 +1,11 @@
 #include "mainwindow.h"
 #include "QMenuBar"
 #include "QToolBar"
-
 #include <QTextEdit>
 #include <QFileDialog>
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     tcv_mdiArea_p = new QMdiArea();
     this->setCentralWidget(tcv_mdiArea_p);
     this->createActions();
-    ;
+
+    tcv_functionToolBar_p = NULL;
 }
 
 MainWindow::~MainWindow()
@@ -23,14 +26,27 @@ void MainWindow::createActions()
 {
     QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
     QToolBar *fileToolBar = addToolBar(tr("File"));
+    QToolBar *tv_leftToolBar_p = addToolBar(tr("Operate"));
+    this->addToolBar(Qt::LeftToolBarArea, tv_leftToolBar_p);
+    tcv_functionToolBar_p = new TFunctionToolBar(tr("Function"));
+    addToolBar(tcv_functionToolBar_p);
+    this->addToolBar(Qt::RightToolBarArea, tcv_functionToolBar_p);
 
-    const QIcon newIcon = QIcon::fromTheme("document-new", QIcon(":/icon/open.png"));
+
+    QIcon newIcon = QIcon::fromTheme("document-new", QIcon(":/icon/open.png"));
     tcv_newAct_p = new QAction(newIcon, tr("&Open a new image file"), this);
     tcv_newAct_p->setShortcuts(QKeySequence::Open);
     tcv_newAct_p->setStatusTip(tr("Open a new image file"));
     connect(tcv_newAct_p, &QAction::triggered, this, &MainWindow::newImageFile);
     fileMenu->addAction(tcv_newAct_p);
     fileToolBar->addAction(tcv_newAct_p);
+
+    newIcon = QIcon::fromTheme("document-new", QIcon(":/icon/imageProcess.png"));
+    tcv_newImageProcessAct_p = new QAction(newIcon, tr("Create a new image process file"), this);
+    tcv_newImageProcessAct_p->setStatusTip(tr("Create a new image process file"));
+    connect(tcv_newImageProcessAct_p, &QAction::triggered, this, &MainWindow::newImageFile);
+    fileMenu->addAction(tcv_newImageProcessAct_p);
+    fileToolBar->addAction(tcv_newImageProcessAct_p);
 }
 
 void MainWindow::updateMenus()
@@ -75,3 +91,7 @@ void MainWindow::newImageFile() {
     #endif
     }
 }
+
+void MainWindow::newImageProcessFile() {
+}
+

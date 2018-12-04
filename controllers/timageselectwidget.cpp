@@ -25,3 +25,8 @@ TImageSelectWidget::TImageSelectWidget(const QString &text, QWidget *parent) : Q
 void TImageSelectWidget::dropEvent(QDropEvent *event) {
     qDebug() << event->mimeData();
 }
+
+void TImageSelectWidget::dragMoveEvent(QDragMoveEvent *event) {
+    event->setDropAction(Qt::MoveAction);
+    event->accept();
+}

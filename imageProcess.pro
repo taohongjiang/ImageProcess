@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     widgets/timagedisplaywidget.cpp \
     controllers/timageselectwidget.cpp \
-    widgets/tfunctiontoolbar.cpp
+    widgets/tfunctiontoolbar.cpp \
+    controllers/timageselectwidget.cpp
 
 HEADERS  += mainwindow.h \
     widgets/timagedisplaywidget.h \
     controllers/timageselectwidget.h \
-    widgets/tfunctiontoolbar.h
+    widgets/tfunctiontoolbar.h \
+    controllers/timageselectwidget.h
 
 RESOURCES += \
     imageprocess.qrc

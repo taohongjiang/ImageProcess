@@ -7,7 +7,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
-
+#include "../controllers/timageselectwidget.h"
 
 class TFunctionToolBar : public QToolBar
 {
@@ -16,6 +16,9 @@ public:
     explicit TFunctionToolBar(QWidget *parent = 0);
     explicit TFunctionToolBar(const QString &title, QWidget *parent = 0);
     void createUi();
+public:
+    TImageSelectWidget* tcv_imageSelectWidgetLeft_p;
+    TImageSelectWidget* tcv_imageSelectWidgetRight_p;
 
 signals:
 

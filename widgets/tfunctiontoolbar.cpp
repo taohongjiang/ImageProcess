@@ -15,20 +15,22 @@ void TFunctionToolBar::createUi() {
     QLabel* tv_ImageDiscreption_p = new QLabel(tr("Image1"));
     tv_ImageDiscreption_p->setAlignment(Qt::AlignHCenter);
     tv_tempV1_p->addWidget(tv_ImageDiscreption_p);
-    QLabel* tv_imageSub_p = new QLabel(tr("Empty"));
-    tv_imageSub_p->setFrameShape(QFrame::Box);
-    tv_imageSub_p->setFixedSize(QSize(60, 60));
-    tv_imageSub_p->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    tv_tempV1_p->addWidget(tv_imageSub_p);
+    tcv_imageSelectWidgetLeft_p = new TImageSelectWidget(tr("Empty"), this);
+    tcv_imageSelectWidgetLeft_p->setFrameShape(QFrame::Box);
+    tcv_imageSelectWidgetLeft_p->setFixedSize(QSize(60, 60));
+    tcv_imageSelectWidgetLeft_p->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+    tv_tempV1_p->addWidget(tcv_imageSelectWidgetLeft_p);
     QVBoxLayout* tv_tempV2_p = new QVBoxLayout();
     tv_ImageDiscreption_p = new QLabel(tr("Image2"));
     tv_ImageDiscreption_p->setAlignment(Qt::AlignHCenter);
     tv_tempV2_p->addWidget(tv_ImageDiscreption_p);
-    tv_imageSub_p = new QLabel(tr("Empty"));
-    tv_imageSub_p->setFrameShape(QFrame::Box);
-    tv_imageSub_p->setFixedSize(QSize(60, 60));
-    tv_imageSub_p->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    tv_tempV2_p->addWidget(tv_imageSub_p);
+    tcv_imageSelectWidgetRight_p = new TImageSelectWidget(tr("Empty"), this);
+    tcv_imageSelectWidgetRight_p->setFrameShape(QFrame::Box);
+    tcv_imageSelectWidgetRight_p->setFixedSize(QSize(60, 60));
+    tcv_imageSelectWidgetRight_p->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+    tv_tempV2_p->addWidget(tcv_imageSelectWidgetRight_p);
 
     QHBoxLayout* tv_tempH1_p = new QHBoxLayout;
     tv_tempH1_p->addLayout(tv_tempV1_p);
